@@ -7,3 +7,16 @@
 //
 //  The tab component should look like this:
 //    <div class="tab">topic here</div>
+
+
+const topicsDiv = document.querySelector('.topics');
+
+axios.get('https://lambda-times-backend.herokuapp.com/topics')
+    .then( response => {
+
+        // logging the shape of the data
+        console.log('have data:', response.data);
+    })
+    .catch( err => {
+        console.log('have not data');
+    })
