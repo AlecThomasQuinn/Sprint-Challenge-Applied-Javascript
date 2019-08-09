@@ -18,6 +18,8 @@
 //
 // Create a card for each of the articles and add the card to the DOM.
 
+const cardContainer = document.querySelector('.cards-container');
+
 axios.get('https://lambda-times-backend.herokuapp.com/articles')
     .then( response => {
 
@@ -26,14 +28,41 @@ axios.get('https://lambda-times-backend.herokuapp.com/articles')
 
         articlesBootstrap = response.data.articles.bootstrap;
         console.log(articlesBootstrap);
+//        articlesBootstrap.forEach(article => {console.log(article.headline)});
+
+        articlesBootstrap.forEach(article => {
+            let newArticle = createArticle(article.headline, article.authorPhoto, article.authorName);
+            cardContainer.appendChild(newArticle);
+        });
 
         articlesJavascript = response.data.articles.javascript;
-        articlesBootstrap = response.data.articles.bootstrap;
         articlesTechnology = response.data.articles.technology;
         articlesJquery = response.data.articles.jquery;
         articlesNode = response.data.articles.node;
 
+        articlesJavascript.forEach(article => {
+            let newArticle = createArticle(article.headline, article.authorPhoto, article.authorName);
+            cardContainer.appendChild(newArticle);
+        });
 
+        articlesTechnology.forEach(article => {
+            let newArticle = createArticle(article.headline, article.authorPhoto, article.authorName);
+            cardContainer.appendChild(newArticle);
+        });
+
+        articlesJquery.forEach(article => {
+            let newArticle = createArticle(article.headline, article.authorPhoto, article.authorName);
+            cardContainer.appendChild(newArticle);
+        });
+
+        articlesNode.forEach(article => {
+            let newArticle = createArticle(article.headline, article.authorPhoto, article.authorName);
+            cardContainer.appendChild(newArticle);
+        });
+        
+// there is a better, DRY way to do this either involving "map"
+// or "forEach" that is beyond me atm, I will investigate further later
+        
 
         })
     .catch( err => {
