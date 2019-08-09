@@ -23,8 +23,19 @@ axios.get('https://lambda-times-backend.herokuapp.com/articles')
 
         // logging the shape of the data
         console.log('have data:', response.data.articles);
-        })
 
+        articlesBootstrap = response.data.articles.bootstrap;
+        console.log(articlesBootstrap);
+
+        articlesJavascript = response.data.articles.javascript;
+        articlesBootstrap = response.data.articles.bootstrap;
+        articlesTechnology = response.data.articles.technology;
+        articlesJquery = response.data.articles.jquery;
+        articlesNode = response.data.articles.node;
+
+
+
+        })
     .catch( err => {
         console.log('have not data in Cards');
     })
